@@ -22,15 +22,15 @@ public class Movement : MonoBehaviour
     void Update()
     {
         Horizontal = joyStick.Horizontal;
-        joyStickObject.SetActive(true);
+        //joyStickObject.SetActive(true);
         transform.Translate(Horizontal * speed * Time.deltaTime, 0, 0);
         if (Horizontal < 0.0f)
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            transform.localScale = new Vector3(-0.080761f, 0.080761f, 0.080761f);
         }
         else if (Horizontal > 0.0f)
         {
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(0.080761f, 0.080761f, 0.080761f);
         }
         if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(rb.velocity.y) < 0.001f)
         {
