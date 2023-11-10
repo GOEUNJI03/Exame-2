@@ -36,7 +36,7 @@ public class Movement : MonoBehaviour
         if (rb.velocity.y <= 0)
         {
             animJump = false;
-            //anim.SetFloat("MoveY", 0);
+            anim.SetFloat("MoveY", 0);
         }
 
         if (horizontal < 0.0f)
@@ -63,28 +63,29 @@ public class Movement : MonoBehaviour
         }
         _checkAnimation();
 
-        /*if (dead)
+        if (dead)
         {
             SceneManager.LoadScene("loser");
-        }*/
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (atack)
         {
-            Debug.Log("enemy");
-            /*if (collision.tag == "Enemy")
+            if (collision.tag == "enemy")
             {
                 Destroy(collision.gameObject);
-            }*/
+                Debug.Log("enemy_ata");
+            }
         }
-        /*else
+        else
         {
-            if (collision.tag == "Enemy")
+            if (collision.tag == "enemy")
             {
+                Debug.Log("enemy_dead");
                 dead = true;
             }
-        }*/
+        }
     }
             public void BotonJump()
     {
@@ -101,11 +102,11 @@ public class Movement : MonoBehaviour
     public void BotonAtaque()
     {
         anim.SetBool("atackf", false);
-        //anim.Play("ataque_player");
-        //atack = true;
-        /*anim.SetFloat("MoveX", 1);
-        anim.SetFloat("MoveY", 1);*/
-        StartCoroutine(Stop(.62f));
+        anim.Play("ataque_player");
+        atack = true;
+        anim.SetFloat("MoveX", 1);
+        anim.SetFloat("MoveY", 1);
+        StartCoroutine(Stop(.31f));
     }
     private void WalkingOn()
     {
@@ -123,13 +124,13 @@ public class Movement : MonoBehaviour
     {
         if (animJump)
         {
-            Debug.Log("salto");
+            //Debug.Log("salto");
             //anim.Play("salto_player");
             return;
         }
         if (walking)
         {
-            Debug.Log("caminar");
+            //Debug.Log("caminar");
             //anim.Play("player_run");
             return;
         }
@@ -143,6 +144,7 @@ public class Movement : MonoBehaviour
         anim.SetFloat("MoveX", 0);
         anim.SetFloat("MoveY", 0);
         anim.SetBool("atackf", true);
-        //atack = false;
+        yield return new WaitForSeconds(1);
+        atack = false;
     }
 }

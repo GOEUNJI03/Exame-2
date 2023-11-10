@@ -11,17 +11,17 @@ public class SFX : MonoBehaviour
 
     public void PlayJump()
     {
-        Debug.Log("saltosfx");
+        //Debug.Log("saltosfx");
         jump.Play();
     }
     public void PlayWalk()
     {
-        Debug.Log("caminarsfx");
+        //Debug.Log("caminarsfx");
         walk.Play();
     }
     public void StopWalk()
     {
-        Debug.Log("caminarsfxstop");
+        //Debug.Log("caminarsfxstop");
         walk.Stop();
     }
 
