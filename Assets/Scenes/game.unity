@@ -481,6 +481,10 @@ PrefabInstance:
       value: Golem
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: 84bb1848b896e194a94c80ff1afbbca7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 84bb1848b896e194a94c80ff1afbbca7, type: 3}
       propertyPath: m_TagString
       value: enemy_stage2
       objectReference: {fileID: 0}
@@ -2992,6 +2996,7 @@ GameObject:
   - component: {fileID: 445392707}
   - component: {fileID: 445392706}
   - component: {fileID: 445392708}
+  - component: {fileID: 445392709}
   m_Layer: 0
   m_Name: win
   m_TagString: win
@@ -3111,6 +3116,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &445392709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445392705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c1446fae4700704ab4651a57ddb5d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winSquare: {fileID: 445392708}
 --- !u!1 &473221412
 GameObject:
   m_ObjectHideFlags: 0
@@ -5158,7 +5176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: c5f6c5c35e434b442aca8bd492c8da50, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: c5f6c5c35e434b442aca8bd492c8da50, type: 3}
       propertyPath: m_TagString
@@ -6180,7 +6198,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103281482}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 352c297f9c4825646aad70b6d133c5ff, type: 3}
@@ -7228,9 +7246,9 @@ MonoBehaviour:
   puntosMovimiento:
   - {fileID: 1206310041}
   - {fileID: 848566503}
-  - {fileID: 848566503}
-  - {fileID: 848566503}
-  - {fileID: 848566503}
+  - {fileID: 25360283}
+  - {fileID: 1021507376}
+  - {fileID: 2034289791}
   distanciaMinima: 0.1
   seleccion: 1
   flip: 0
@@ -7838,6 +7856,10 @@ PrefabInstance:
       value: psd Abejorro
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: 28230b29e424938499a86b37f7366fea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 28230b29e424938499a86b37f7366fea, type: 3}
       propertyPath: m_TagString
       value: enemy_stage3
       objectReference: {fileID: 0}
@@ -8113,6 +8135,10 @@ PrefabInstance:
     - target: {fileID: -8653719598885068355, guid: 80686cded9c42ea439a5b5265612e9ee, type: 3}
       propertyPath: m_Name
       value: Esqueleto
+      objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 80686cded9c42ea439a5b5265612e9ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: 80686cded9c42ea439a5b5265612e9ee, type: 3}
       propertyPath: m_TagString
@@ -10253,6 +10279,10 @@ PrefabInstance:
     - target: {fileID: -8653719598885068355, guid: 0b0a5900bbc9aab4690b91b608d3af02, type: 3}
       propertyPath: m_Name
       value: Gato
+      objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 0b0a5900bbc9aab4690b91b608d3af02, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: 0b0a5900bbc9aab4690b91b608d3af02, type: 3}
       propertyPath: m_TagString

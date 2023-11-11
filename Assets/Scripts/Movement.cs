@@ -97,7 +97,7 @@ public class Movement : MonoBehaviour
             if (collision.tag == "enemy_stage2")
             {
                 Destroy(collision.gameObject);
-                Debug.Log("enemy_ata");
+                //Debug.Log("enemy_ata");
             }
         }
         else
@@ -113,14 +113,14 @@ public class Movement : MonoBehaviour
             if (collision.tag == "enemy_stage3")
             {
                 Destroy(collision.gameObject);
-                Debug.Log("enemy_ata");
+                //Debug.Log("enemy_ata");
             }
         }
         else
         {
             if (collision.tag == "enemy_stage3")
             {
-                Debug.Log("enemy_dead");
+                //Debug.Log("enemy_dead");
                 dead = true;
             }
         }
@@ -135,9 +135,13 @@ public class Movement : MonoBehaviour
         }
         if (collision.gameObject.tag == "tp2")
         {
-            avi.SetStart();
+            //avi.SetStart();
             cam.transform.position = new Vector3(40, 0.02f, -10);
             this.transform.position = new Vector3(31.5f, -3, 0);
+        }
+        if (collision.gameObject.tag == "win")
+        {
+            SceneManager.LoadScene("win");
         }
     }
     public void BotonJump()
