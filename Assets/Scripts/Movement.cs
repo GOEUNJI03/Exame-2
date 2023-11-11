@@ -7,7 +7,10 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class Movement : MonoBehaviour
 {
+    [SerializeField] private avispon avi;
+    [SerializeField] private movGato movG;
     [SerializeField] private Camera cam;
+    private int entityCount1;
     private bool dead;
     private bool atack;
     private bool animJump = false;
@@ -33,8 +36,8 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
+        //entityCount1 = CountEntitiesWithTag("enemys_stage1");
+
         horizontal = joyStick.Horizontal;
         transform.Translate(horizontal * speed * Time.deltaTime, 0, 0);
 
@@ -46,16 +49,25 @@ public class Movement : MonoBehaviour
         if (horizontal < 0.0f)
         {
             //moving = true;
+            anim.SetFloat("MoveX", 1);
             transform.localScale = new Vector3(-0.080761f, 0.080761f, 0.080761f);
         }
         else if (horizontal > 0.0f)
         {
             //moving = true;
+            anim.SetFloat("MoveX", 1);
             transform.localScale = new Vector3(0.080761f, 0.080761f, 0.080761f);
         }
-        
-        
-        //_checkAnimation();
+        if (horizontal == 0)
+        {
+            anim.SetFloat("MoveX", 0);
+        }
+        {
+            
+        }
+
+
+        _checkAnimation();
 
         if (dead)
         {
@@ -66,7 +78,23 @@ public class Movement : MonoBehaviour
     {
         if (atack)
         {
-            if (collision.tag == "enemy")
+            if (collision.tag == "enemy_stage1")
+            {
+                Destroy(collision.gameObject);
+                //Debug.Log("enemy_ata");
+            }
+        }
+        else
+        {
+            if (collision.tag == "enemy_stage1")
+            {
+                Debug.Log("enemy_dead");
+                dead = true;
+            }
+        }
+        if (atack)
+        {
+            if (collision.tag == "enemy_stage2")
             {
                 Destroy(collision.gameObject);
                 Debug.Log("enemy_ata");
@@ -74,7 +102,23 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            if (collision.tag == "enemy")
+            if (collision.tag == "enemy_stage2")
+            {
+                Debug.Log("enemy_dead");
+                dead = true;
+            }
+        }
+        if (atack)
+        {
+            if (collision.tag == "enemy_stage3")
+            {
+                Destroy(collision.gameObject);
+                Debug.Log("enemy_ata");
+            }
+        }
+        else
+        {
+            if (collision.tag == "enemy_stage3")
             {
                 Debug.Log("enemy_dead");
                 dead = true;
@@ -82,11 +126,16 @@ public class Movement : MonoBehaviour
         }
         if (collision.gameObject.tag == "tp1")
         {
-            cam.transform.position = new Vector3(20, 0.02f, -10);
-            this.transform.position = new Vector3(11.5f, -3, 0);
+            if (GameObject.FindGameObjectsWithTag("enemy_stage1").Length == 0) 
+            {
+                movG.SetStart();
+                cam.transform.position = new Vector3(20, 0.02f, -10);
+                this.transform.position = new Vector3(11.5f, -3, 0);
+            }
         }
         if (collision.gameObject.tag == "tp2")
         {
+            avi.SetStart();
             cam.transform.position = new Vector3(40, 0.02f, -10);
             this.transform.position = new Vector3(31.5f, -3, 0);
         }
@@ -113,7 +162,7 @@ public class Movement : MonoBehaviour
         StartCoroutine(Stop(.31f));
     }
     
-    /*void _checkAnimation()
+    void _checkAnimation()
     {
         if (animJump)
         {
@@ -130,7 +179,7 @@ public class Movement : MonoBehaviour
 
         //anim.Play("idl_player");
 
-    }*/
+    }
     IEnumerator Stop(float Tiempo)
     {
         yield return new WaitForSeconds(Tiempo);

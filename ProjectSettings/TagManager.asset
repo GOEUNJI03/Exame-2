@@ -8,6 +8,10 @@ TagManager:
   - tp1
   - tp2
   - win
+  - enemy_stage1
+  - enemy_stage2
+  - enemy_stage3
+  - destroy
   layers:
   - Default
   - TransparentFX
