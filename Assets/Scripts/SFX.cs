@@ -7,7 +7,7 @@ public class SFX : MonoBehaviour
     [SerializeField]private AudioSource jump;
     [SerializeField]private AudioSource walk;
 
-    public float CurrentVolumen { get {  return jump.volume; } set { jump.volume = value; walk.volume = value; } }
+    //public float CurrentVolumen { get {  return jump.volume; } set { jump.volume = value; walk.volume = value; } }
 
     public void PlayJump()
     {
@@ -28,9 +28,9 @@ public class SFX : MonoBehaviour
     /// <summary>
     /// Agregando La abilidad de cambiar el volumen de los effectos de Sonido
     /// </summary>
-    public void CambioVolumen(float volumen) 
+    /*public void CambioVolumen(float volumen) 
     {
         jump.volume = volumen;
         walk.volume = volumen;
-    }
+    }*/
 }

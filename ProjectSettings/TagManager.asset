@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - enemy
+  - tp1
+  - tp2
+  - win
   layers:
   - Default
   - TransparentFX

@@ -7,6 +7,7 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class Movement : MonoBehaviour
 {
+    [SerializeField] private Camera cam;
     private bool dead;
     private bool atack;
     private bool animJump = false;
@@ -18,6 +19,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private Joystick joyStick;
     [SerializeField] private Animator anim;
     [SerializeField] private SFX sfx;
+    //private bool moving;
+
     //[SerializeField] private GameObject joyStickObject;
 
     // Start is called before the first frame update
@@ -30,6 +33,8 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        
         horizontal = joyStick.Horizontal;
         transform.Translate(horizontal * speed * Time.deltaTime, 0, 0);
 
@@ -38,30 +43,19 @@ public class Movement : MonoBehaviour
             animJump = false;
             anim.SetFloat("MoveY", 0);
         }
-
         if (horizontal < 0.0f)
         {
-            if (Mathf.Abs(rb.velocity.y) < 0.001f)
-            {
-                WalkingOn();
-            }
+            //moving = true;
             transform.localScale = new Vector3(-0.080761f, 0.080761f, 0.080761f);
         }
         else if (horizontal > 0.0f)
         {
-            if(Mathf.Abs(rb.velocity.y) < 0.001f)
-            {
-                WalkingOn();
-            }
+            //moving = true;
             transform.localScale = new Vector3(0.080761f, 0.080761f, 0.080761f);
         }
-
-
-        if (horizontal == 0 || Mathf.Abs(rb.velocity.y) > 0.001f)
-        {
-            WalkingOff();
-        }
-        _checkAnimation();
+        
+        
+        //_checkAnimation();
 
         if (dead)
         {
@@ -86,8 +80,18 @@ public class Movement : MonoBehaviour
                 dead = true;
             }
         }
+        if (collision.gameObject.tag == "tp1")
+        {
+            cam.transform.position = new Vector3(20, 0.02f, -10);
+            this.transform.position = new Vector3(11.5f, -3, 0);
+        }
+        if (collision.gameObject.tag == "tp2")
+        {
+            cam.transform.position = new Vector3(40, 0.02f, -10);
+            this.transform.position = new Vector3(31.5f, -3, 0);
+        }
     }
-            public void BotonJump()
+    public void BotonJump()
     {
         if (Mathf.Abs(rb.velocity.y) < 0.001f)
         {
@@ -108,19 +112,8 @@ public class Movement : MonoBehaviour
         anim.SetFloat("MoveY", 1);
         StartCoroutine(Stop(.31f));
     }
-    private void WalkingOn()
-    {
-        anim.SetFloat("MoveX", 1);
-        sfx.PlayWalk();
-        walking = true;
-    }
-    private void WalkingOff()
-    {
-        anim.SetFloat("MoveX", 0);
-        sfx.StopWalk();
-        walking = false;
-    }
-    void _checkAnimation()
+    
+    /*void _checkAnimation()
     {
         if (animJump)
         {
@@ -137,7 +130,7 @@ public class Movement : MonoBehaviour
 
         //anim.Play("idl_player");
 
-    }
+    }*/
     IEnumerator Stop(float Tiempo)
     {
         yield return new WaitForSeconds(Tiempo);
